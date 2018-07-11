@@ -1,3 +1,4 @@
+const mongoogse = require('mongoose')
 const express = require('express');
 const router = express.Router();
 
@@ -6,6 +7,23 @@ const genres = [
   { id: 2, name: 'Horror' },
   { id: 3, name: 'Romance' },
 ];
+
+const genreSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 50
+  }
+})
+//
+// const Genre = mongoose.model('Genre', genreSchema);
+//
+// async function createGenre() {
+//   const course = new Genre({
+//     name: 'Action',
+//     id: 1
+//   });
 
 app.get('/', (req, res) => {
   res.send(genres);
